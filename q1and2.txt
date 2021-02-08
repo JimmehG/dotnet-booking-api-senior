@@ -1,0 +1,16 @@
+Question 1.
+A:
+The SQL database will allow for less data needing to be stored in the RAM by doing either batch scripts within the SQL database or code written to interface with the SQL database in an object oriented language using queries which obtain smaller amounts of data to run the algorithms and allowing larger results to be held within the SQL database for later use. A few disadvantages/limitations of SQL database systems however is firstly when scaling the database up it could prove costly running a powerful database server and scaling out clould prove difficult to handle multiple database servers interfacing with eachother. Also because the data must adhere to the table definitions provided it could cause complications with the design of the data structure in the XmlDocument vs the design of the SQL database structure. These disadvantages could be solved by using a NoSQL database instead which offers a solution which is more easily scalable and cheaper to do so. NoSQL databases are also free of any predefined schema and so data can be inserted in and changed freely. This comes with different issues when developing code to pull the data from the NoSQL database into your application as knowing exactly what the data structure of what you are receiving can make the implementation less painful (like using an SQL type database).
+
+B:
+1. The solution could implement multithreading operations, making use of multiple threads and thus processing multiple customers' data at once. Also if the algorithm allows it you could use multithreading along with asynchronus operations and/or a semaphore to control the resources available.
+2. It may be worth attempting to reduce the complexity of the algorithm both in space and time complexity. For time complexity perhaps we could use a hash table and/or make use of dynamic programming/memoization to eliminate moments where we are processing the same result more than once.
+3. A queuing system should be used which alerts if there are any errors processing a set of data and will move to the next in the queue when complete or if an error occurs it can be easy to find the problem, fix it and re-process the problem cases.
+
+Question 2.
+If we can use LINQ the function could be simplified and made more efficient by changing the function to:
+bool HasSomethingInCommon(Friend friendA, Friend friendB)
+{
+    return friendA.Interests.Intersect(FriendB.Interests).Any();
+}
+The function 'Intersect' will first build and utilise a hash set then will find the values which are in both sets. The 'Any' function will allow this to return true if it finds a value and will exit early after that first matching. The time complexity of this will be O(n1+n2).
